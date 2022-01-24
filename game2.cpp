@@ -15,6 +15,7 @@
 #include <windows.h>
 #include <D:/C++/Game/timer.h>
 #include <D:/C++/Game/coalission.h>
+// #include <D:/C++/Game/animatons.h>
 #include <sstream>
 using namespace std;
 using namespace sf;
@@ -52,6 +53,7 @@ int direction = 0;
 int change = 25;
 int change2 = 50;
 bool visiable_bullet[1000];
+bool stop_reload = true;
 float current_position[1000];
 int distance_patron[1000];
 int click = -1;
@@ -76,17 +78,66 @@ public:
     }    
 };
 int main(){
+//// reload frames
+sf::Texture arrayOfFramesMove[100];
+//// move frames
+arrayOfFramesMove[0].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/move/survivor-move_rifle_0.png");
+arrayOfFramesMove[1].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/move/survivor-move_rifle_1.png");
+arrayOfFramesMove[2].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/move/survivor-move_rifle_2.png");
+arrayOfFramesMove[3].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/move/survivor-move_rifle_3.png");
+arrayOfFramesMove[4].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/move/survivor-move_rifle_4.png");
+arrayOfFramesMove[5].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/move/survivor-move_rifle_5.png");
+arrayOfFramesMove[6].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/move/survivor-move_rifle_6.png");
+arrayOfFramesMove[7].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/move/survivor-move_rifle_7.png");
+arrayOfFramesMove[8].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/move/survivor-move_rifle_8.png");
+arrayOfFramesMove[9].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/move/survivor-move_rifle_9.png");
+arrayOfFramesMove[10].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/move/survivor-move_rifle_10.png");
+arrayOfFramesMove[11].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/move/survivor-move_rifle_11.png");
+arrayOfFramesMove[12].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/move/survivor-move_rifle_12.png");
+arrayOfFramesMove[13].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/move/survivor-move_rifle_13.png");
+arrayOfFramesMove[14].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/move/survivor-move_rifle_14.png");
+arrayOfFramesMove[15].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/move/survivor-move_rifle_15.png");  
+arrayOfFramesMove[16].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/move/survivor-move_rifle_16.png");
+arrayOfFramesMove[17].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/move/survivor-move_rifle_17.png");
+arrayOfFramesMove[18].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/move/survivor-move_rifle_18.png");
+arrayOfFramesMove[19].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/move/survivor-move_rifle_19.png");
+arrayOfFramesMove[20].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/reload/survivor-reload_rifle_0.png");
+arrayOfFramesMove[21].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/reload/survivor-reload_rifle_1.png");
+arrayOfFramesMove[22].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/reload/survivor-reload_rifle_2.png");
+arrayOfFramesMove[23].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/reload/survivor-reload_rifle_3.png");
+arrayOfFramesMove[24].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/reload/survivor-reload_rifle_4.png");
+arrayOfFramesMove[25].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/reload/survivor-reload_rifle_5.png");
+arrayOfFramesMove[26].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/reload/survivor-reload_rifle_6.png");
+arrayOfFramesMove[27].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/reload/survivor-reload_rifle_7.png");
+arrayOfFramesMove[28].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/reload/survivor-reload_rifle_8.png");
+arrayOfFramesMove[29].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/reload/survivor-reload_rifle_9.png");
+arrayOfFramesMove[30].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/reload/survivor-reload_rifle_10.png");
+arrayOfFramesMove[31].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/reload/survivor-reload_rifle_11.png");
+arrayOfFramesMove[32].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/reload/survivor-reload_rifle_12.png");
+arrayOfFramesMove[33].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/reload/survivor-reload_rifle_13.png");
+arrayOfFramesMove[34].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/reload/survivor-reload_rifle_14.png");
+arrayOfFramesMove[35].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/reload/survivor-reload_rifle_15.png");  
+arrayOfFramesMove[36].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/reload/survivor-reload_rifle_16.png");
+arrayOfFramesMove[37].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/reload/survivor-reload_rifle_17.png");
+arrayOfFramesMove[38].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/reload/survivor-reload_rifle_18.png");
+arrayOfFramesMove[39].loadFromFile("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/reload/survivor-reload_rifle_19.png");
 maps map;
 home home;
-player player("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/move/frames.png",position_player_x,position_player_y,106.52,59,position_player_x,position_player_y);
+player player("D:/Top_Down_Survivor/Top_Down_Survivor/rifle/idle/survivor-idle_rifle_0.png",position_player_x,position_player_y,106.52,59,position_player_x,position_player_y);
 cursor cursor("D:/C++/texture/strela3.png",0,0,width_cursor,height_cursor);
 bullet bullet;
+// animatons animatons;
 coalission coalission;
 sf::VertexArray lines(sf::Lines, 4);
 word word;
 float fps;
-float CurrentFrame = 0;
+int CurrentFrame = 0;
+int CurrentFrame2 = 20;
+float duration = float();
+float duration2 = float();
 Clock clock;
+Clock clock2;
+Clock clock3;
 Time previousTime = clock.getElapsedTime();
 Time currentTime;
 map.draw();
@@ -131,7 +182,12 @@ while (window.pollEvent(event)){
             angel5 = atan2(deltaY ,deltaX);
             distanation = sqrt(pow(window.mapPixelToCoords(sf::Mouse::getPosition(window)).x- player.sprite_player.getPosition().x,2)+pow(window.mapPixelToCoords(sf::Mouse::getPosition(window)).y - player.sprite_player.getPosition().y,2));
             // cout << bullet.sprite_bullet.getPosition().x <<" , " << bullet.sprite_bullet.getPosition().y << "\n";
-            lines[0].position = sf::Vector2f(player.sprite_player.getPosition().x-10,player.sprite_player.getPosition().y-10);
+            sf::Vector2f bulletOffset(50, 15);
+            sf::Transform tansform;
+            tansform.rotate(player.sprite_player.getRotation());
+            sf::Vector2f newBulletOffset = tansform.transformPoint(bulletOffset);
+            sf::Vector2f bulletPosition = player.sprite_player.getPosition() + newBulletOffset;
+            lines[0].position = sf::Vector2f(bulletPosition);
             lines[1].position = sf::Vector2f(window.mapPixelToCoords(sf::Mouse::getPosition(window)).x,window.mapPixelToCoords(sf::Mouse::getPosition(window)).y);
             // bullet.sprite_bullet.setPosition((player.sprite_player.getPosition().x-13)+(change2*cos(angel)),(player.sprite_player.getPosition().y)+(change2*sin(angel)));
             angel2 = atan2(deltaY ,deltaX) * 180.f/3.14f;
@@ -231,16 +287,49 @@ if (player_pos.intersects(rect_pos_6)){
      player.sprite_player.move(sf::Vector2f(0,0.3*time));
    }
 }
+sf::Time dt2 = clock3.restart();
+duration2 += dt2.asSeconds();
+if (stop_reload == false){
+    if (duration2 > 0.05f){
+        // Restart calculation of the duration
+        duration2 = 0;
+
+        // Loop through the animation frames
+        if (CurrentFrame2 < 39){
+            CurrentFrame2 += 1;
+        } 
+        else {
+            // Start from first frame if last frame reached
+           CurrentFrame2 = 19;
+           stop_reload = true;
+        }
+        player.sprite_player.setTexture(arrayOfFramesMove[CurrentFrame2]);
+    }
+}
 if (Keyboard::isKeyPressed(Keyboard::W)){
+// animatons.move();
 // cout << "position sfml " << player.sprite_player.getPosition().x << " , " << player.sprite_player.getPosition().y << ", position box2d " << body->GetPosition().x << " , " << body->GetPosition().y << "\n";
-CurrentFrame += 0.07*time; //служит для прохождения по "кадрам". переменная доходит до трех суммируя произведение времени и скорости. изменив 0.005 можно изменить скорость анимации
-if (CurrentFrame > 20) CurrentFrame -= 20; //если пришли к третьему кадру - откидываемся назад.
-player.sprite_player.setTextureRect(IntRect(106*int(CurrentFrame),0,100,59));
-// body->ApplyForce(b2Vec2(cos(angel)*8,sin(angel)*8), body->GetPosition(),true);
+sf::Time dt = clock2.restart();
+duration += dt.asSeconds();
+if (duration > 0.04f){
+      // Restart calculation of the duration
+      duration = 0;
+
+      // Loop through the animation frames
+      if (CurrentFrame < 18){
+        CurrentFrame += 1;
+      } 
+      else {
+        // Start from first frame if last frame reached
+        CurrentFrame = 0;
+      }
+      player.sprite_player.setTexture(arrayOfFramesMove[CurrentFrame]);
+}
 player.sprite_player.move(sf::Vector2f((cos(angel5)*0.3)*time,0));
 player.sprite_player.move(sf::Vector2f(0,(sin(angel5)*0.3)*time));
 }
 if (Keyboard::isKeyPressed(Keyboard::R)){
+stop_reload = false;
 number_bullets = 6;
 shoot = true;
 }
@@ -256,7 +345,6 @@ else if (Keyboard::isKeyPressed(Keyboard::M))
     view.zoom(1.0001f);
 	window.setView(view);
 }
-window.setFramerateLimit(1500);
 window.setMouseCursorVisible(false);
 window.setView(view);
 window.clear(color);
@@ -277,9 +365,9 @@ for (int i = 0; i<click; i++){
 			window.draw(bullet.sprite_bullet[i]);
 			// angel2[i] = angel;
 			// angl[i] = atan2f(window.mapPixelToCoords(sf::Mouse::getPosition(window)).y - charecter.sprite.getPosition().y,window.mapPixelToCoords(sf::Mouse::getPosition(window)).x - charecter.sprite.getPosition().x)
-			bullet.sprite_bullet[i].move(sf::Vector2f(1.0f*cos(angel[i+1]),0.0f));
-			bullet.sprite_bullet[i].move(sf::Vector2f(0.0f,1.0f*sin(angel[i+1])));
-			current_position[i]+=1.0f;
+			bullet.sprite_bullet[i].move(sf::Vector2f(0.3f*cos(angel[i+1]),0.0f));
+			bullet.sprite_bullet[i].move(sf::Vector2f(0.0f,0.3f*sin(angel[i+1])));
+			current_position[i]+=0.3f;
 			// cout << i << "count = " << current_position[i] << "\n";
 			// cout << i << "distance_patron = " << distance_patron[i] << "\n";
 			if (current_position[i]>=distance_patron[i]){

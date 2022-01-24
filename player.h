@@ -30,7 +30,7 @@ public:
         image_player.loadFromFile(way_to_sprite);
         texture_player.loadFromImage(image_player);
         sprite_player.setTexture(texture_player);
-        sprite_player.setTextureRect(IntRect(0,0,width_charcter,height_charcter)); // ширина - 716 высота - 1065 716/5 = 143.2 1065 / 7 = 152.14
+        // sprite_player.setTextureRect(IntRect(0,0,width_charcter,height_charcter)); // ширина - 716 высота - 1065 716/5 = 143.2 1065 / 7 = 152.14
         sprite_player.setOrigin(width_charcter / 2, height_charcter/ 2);
         sprite_player.setPosition(position_player_x,position_player_y);
 
