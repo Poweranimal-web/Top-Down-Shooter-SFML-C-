@@ -1,0 +1,155 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+        {
+            "type": "cppbuild",
+            "label": "C/C++: cpp.exe сборка активного файла",
+            "command": "D:\\C++\\msys\\mingw64\\bin\\g++.exe",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
+            "detail": "компилятор: D:\\C++\\msys\\mingw64\\bin\\cpp.exe"
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++.exe сборка активного файла",
+            "command": "D:\\C++\\msys\\mingw64\\bin\\g++.exe",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "-lsfml-system",
+                "-lsfml-window",
+                "-lsfml-graphics",
+                "-lsfml-audio",
+                "-lsfml-main",
+                "-lglew32",
+                "-lfreeglut",
+                "-lfreetype",
+                "-lopengl32",
+                "-lglu32",
+                "-lBox2D",
+                "-lopencv_core",
+                "-lopencv_highgui", 
+                "-lopencv_imgcodecs", 
+                "-lopencv_imgproc", 
+                "-lopencv_videoio",
+                // "-lboost_atomic-mt",
+                // "-lboost_chrono-mt",
+                // "-lboost_container-mt",
+                // "-lboost_context-mt",
+                // "-lboost_contract-mt",
+                // "-lboost_coroutine-mt",
+                // "-lboost_date_time-mt",
+                // "-lboost_exception-mt",
+                // "-lboost_fiber-mt",
+                // "-lboost_filesystem-mt",
+                // "-lboost_graph-mt",
+                // "-lboost_iostreams-mt",
+                // "-lboost_json-mt",
+                // "-lboost_locale-mt",
+                // "-lboost_log_setup-mt",
+                // "-lboost_log-mt",
+                // "-lboost_math_c99f-mt",
+                // "-lboost_math_c99l-mt",
+                // "-lboost_math_c99-mt",
+                // "-lboost_math_tr1f-mt",
+                // "-lboost_math_tr1l-mt",
+                // "-lboost_math_tr1-mt",
+                // "-lboost_nowide-mt",
+                // "-lboost_prg_exec_monitor-mt",
+                // "-lboost_program_options-mt",
+                // "-lboost_random-mt",
+                // "-lboost_regex-mt",
+                // "-lboost_serialization-mt",
+                // "-lboost_stacktrace_noop-mt",
+                // "-lboost_stacktrace_windbg_cached-mt",
+                // "-lboost_stacktrace_windbg-mt",
+                // "-lboost_system-mt",
+                // "-lboost_test_exec_monitor-mt",
+                // "-lboost_thread-mt",
+                // "-lboost_timer-mt",
+                // "-lboost_type_erasure-mt",
+                // "-lboost_unit_test_framework-mt",
+                // "-lboost_wave-mt",
+                // "-lboost_wserialization-mt",
+                "-lgdi32",
+                "-lwsock32",
+                "-lws2_32",
+                "-lboost_chrono-mt", 
+                "-lboost_system-mt", 
+                "-lboost_thread-mt",
+                "-liconv",
+                "-lz",
+                "-W"
+
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
+            "detail": "компилятор: D:\\C++\\msys\\mingw64\\bin\\g++.exe"
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++.exe сборка активного файла",
+            "command": "D:\\C++\\msys\\mingw64\\bin\\g++.exe",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "-lsfml-system",
+                "-lsfml-window",
+                "-lsfml-graphics",
+                "-lsfml-audio",
+                "-lfreetype",
+                "-lopengl32"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
+            "detail": "компилятор: D:\\C++\\msys\\mingw64\\bin\\g++.exe"
+        },
+        {
+            "type": "cppbuild",
+            "label": "C/C++: g++.exe сборка активного файла",
+            "command": "D:\\C++\\msys\\mingw64\\bin\\g++.exe",
+            "args": [
+                "-g",
+                "${file}",
+                "-o",
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "-Wall",
+                "-Wextra",
+                "-Wpedantic"
+            ],
+            "options": {
+                "cwd": "D:\\C++\\msys\\mingw64\\bin"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": "build",
+            "detail": "компилятор: D:\\C++\\msys\\mingw64\\bin\\g++.exe"
+        }
+    ]
+}
